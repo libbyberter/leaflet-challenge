@@ -42,7 +42,7 @@ function makeMap(quakeMarkersLayer) {
         for (var l = 0; l < grades.length; l++) {
             div.innerHTML +=
                 '<i style="background:' + depthColor(grades[l] + 1) + ';"></i> ' +
-                grades[l] + (grades[l + 1] ? '&ndash;' + grades[l + 1] + '<br>' : '+');
+                grades[l] + (grades[l + 1] ? '&ndash;' + grades[l + 1] + ' km deep' + '<br>' : '+ km deep');
             // console.log(depthColor(grades[l] + 1))
             }
             
@@ -94,7 +94,7 @@ function createMarkers(response) {
                 fillColor: depthColor(depth),
                 radius: markerSize(magnitude),
                 weight: 1
-            })
+            }).bindPopup("<h3>" + quakes[i].properties.place + "<h3><h3>Magnitude: " + magnitude + "<h3><h3>Depth: " + depth +"</h3>")
         )
     }
 
